@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mia Agent</title>
+    <meta
+      name="description"
+      content="Mia is a personal iMessage AI agent with LangGraph routing, Convex memory, SendBlue messaging, and a realtime dashboard."
+    />
+    <meta property="og:title" content="Mia Agent" />
+    <meta
+      property="og:description"
+      content="A personal iMessage AI agent with dynamic sub-agents, memory, automation, and a realtime operations dashboard."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="assets/mia-logo.png" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="#top" aria-label="Mia Agent home">
+        <img src="assets/mia-logo.png" alt="" />
+        <span>Mia Agent</span>
+      </a>
+      <nav aria-label="Project sections">
+        <a href="#system">System</a>
+        <a href="#stack">Stack</a>
+        <a href="#run">Run</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">Personal AI infrastructure</p>
+        <h1>An iMessage-native agent that can route work, remember context, and create focused sub-agents.</h1>
+        <p class="lede">
+          Mia is a local-first monorepo built with FastAPI, LangGraph, Convex, SendBlue, and Next.js.
+          It receives iMessages, stores memory, runs agent workflows, and exposes a realtime control
+          surface for debugging and setup.
+        </p>
+        <div class="actions">
+          <a href="https://github.com/zhiliao000-star/mia-agent/" target="_blank">View on GitHub</a>
+          <a href="https://discord.gg/G4F7URVuwF" target="_blank" class="secondary">Join Discord</a>
+        </div>
+      </section>
+
+      <section id="system" class="section">
+        <div class="section-title">
+          <p class="eyebrow">System</p>
+          <h2>Built as real agent infrastructure, not a chatbot wrapper.</h2>
+        </div>
+        <div class="grid">
+          <article>
+            <span>01</span>
+            <h3>iMessage interface</h3>
+            <p>SendBlue webhooks receive inbound messages, dedupe events, and send replies back through iMessage.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Parent router</h3>
+            <p>LangGraph classifies user intent and creates dynamic sub-agent specs with isolated tool access.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Memory system</h3>
+            <p>Convex stores short-term, long-term, and permanent memories with importance and decay metadata.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Memory Court</h3>
+            <p>A nightly workflow consolidates, challenges, and judges memory cleanup decisions with audit records.</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Gateway</h3>
+            <p>A single local process starts the dashboard, Convex dev, and the Python agent service.</p>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>Dashboard</h3>
+            <p>A realtime Next.js interface shows agents, memory, events, automations, connectors, and setup state.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="stack" class="section split">
+        <div>
+          <p class="eyebrow">Stack</p>
+          <h2>Open, provider-flexible, and designed for extension.</h2>
+        </div>
+        <ul class="stack-list">
+          <li><strong>LangGraph</strong><span>Agent state machines and routing</span></li>
+          <li><strong>FastAPI</strong><span>Webhook and internal service endpoints</span></li>
+          <li><strong>OpenAI-compatible LLMs</strong><span>Custom API key, base URL, and model</span></li>
+          <li><strong>Convex</strong><span>Realtime storage, cron jobs, and internal HTTP API</span></li>
+          <li><strong>SendBlue</strong><span>iMessage webhook and outbound delivery</span></li>
+          <li><strong>Next.js</strong><span>Setup flow and realtime operations dashboard</span></li>
+        </ul>
+      </section>
+
+      <section id="run" class="section">
+        <div class="section-title">
+          <p class="eyebrow">Get Started</p>
+          <h2>Run Mia locally.</h2>
+        </div>
+        <div class="run-steps">
+          <div class="step">
+            <p>1. Clone the repository and install dependencies.</p>
+            <pre><code>git clone https://github.com/zhiliao000-star/mia-agent.git
+cd mia-agent
+npm install</code></pre>
+          </div>
+          <div class="step">
+            <p>2. Set up your environment variables by copying <code>.env.example</code> to <code>.env</code> and filling in the required values.</p>
+            <pre><code>cp .env.example .env</code></pre>
+          </div>
+          <div class="step">
+            <p>3. Run the Mia Gateway to start all services.</p>
+            <pre><code>npm run mia:gateway</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <a class="brand" href="#top" aria-label="Mia Agent home">
+          <img src="assets/mia-logo.png" alt="" />
+          <span>Mia Agent</span>
+        </a>
+        <p>A personal AI agent.</p>
+      </footer>
+    </main>
+  </body>
+</html>

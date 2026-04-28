@@ -1,0 +1,32 @@
+[project]
+name = "mia-agent-service"
+version = "0.1.0"
+description = "FastAPI and LangGraph service for Mia personal AI agent"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "httpx>=0.27.2",
+  "langchain-core>=0.3.25",
+  "langchain-openai>=0.2.12",
+  "langgraph>=0.2.60",
+  "pydantic>=2.10.3",
+  "pydantic-settings>=2.6.1",
+  "python-dotenv>=1.0.1",
+  "uvicorn[standard]>=0.32.1"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.4",
+  "pytest-asyncio>=0.24.0",
+  "respx>=0.21.1",
+  "ruff>=0.8.3"
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
