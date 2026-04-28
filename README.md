@@ -62,7 +62,6 @@ npm run dev:convex
 See LICENSE.
 
 ## Star History
-## Star History
 
 <a href="https://www.star-history.com/?repos=zhiliao000-star%2Fmia-agent&type=date&legend=top-left">
  <picture>
