@@ -62,5 +62,12 @@ npm run dev:convex
 See LICENSE.
 
 ## Star History
+## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=zhiliao000-star/mia-agent&type=Date)](https://www.star-history.com/#zhiliao000-star/mia-agent&Date)
+<a href="https://www.star-history.com/?repos=zhiliao000-star%2Fmia-agent&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=zhiliao000-star/mia-agent&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=zhiliao000-star/mia-agent&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=zhiliao000-star/mia-agent&type=date&legend=top-left" />
+ </picture>
+</a>
