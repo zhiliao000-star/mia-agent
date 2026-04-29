@@ -2,6 +2,18 @@ import { v } from "convex/values";
 import type { Id } from "./_generated/dataModel";
 import { internal } from "./_generated/api";
 import { internalAction, internalMutation, internalQuery, query } from "./_generated/server";
+import { courtDecisionAction, nullableString } from "./validators";
+
+function sameMemoryIds(left: unknown, right: string[]) {
+  return Array.isArray(left) && left.join(",") === right.join(",");
+}
+
+function proposalMatchesDecision(proposal: unknown, memoryIds: string[]) {
+  if (!proposal || typeof proposal !== "object" || !("memory_ids" in proposal)) {
+    return false;
+  }
+  return sameMemoryIds(proposal.memory_ids, memoryIds);
+}
 
 function newYorkLocalParts(now: Date) {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -130,13 +142,8 @@ export const applyDecisions = internalMutation({
     judgeDecisions: v.array(
       v.object({
         memory_ids: v.array(v.string()),
-        action: v.union(
-          v.literal("delete"),
-          v.literal("merge"),
-          v.literal("keep"),
-          v.literal("manual_review"),
-        ),
-        final_content: v.optional(v.union(v.string(), v.null())),
+        action: courtDecisionAction,
+        final_content: v.optional(nullableString),
         reason: v.string(),
       }),
     ),
@@ -150,15 +157,15 @@ export const applyDecisions = internalMutation({
         action: decision.action,
         finalContent: decision.final_content ?? undefined,
         reason: decision.reason,
-        proposal: args.proposals.find((proposal) => {
-          const ids = proposal?.memory_ids;
-          return Array.isArray(ids) && ids.join(",") === decision.memory_ids.join(",");
-        }),
-        adversarialRounds: args.adversarialRounds.filter((round) => {
-          const proposal = args.proposals[round?.proposal_index ?? -1];
-          const ids = proposal?.memory_ids;
-          return Array.isArray(ids) && ids.join(",") === decision.memory_ids.join(",");
-        }),
+        proposal: args.proposals.find((proposal) =>
+          proposalMatchesDecision(proposal, decision.memory_ids),
+        ),
+        adversarialRounds: args.adversarialRounds.filter((round) =>
+          proposalMatchesDecision(
+            args.proposals[round?.proposal_index ?? -1],
+            decision.memory_ids,
+          ),
+        ),
         createdAt: now,
       });
 
